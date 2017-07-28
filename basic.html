@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Basic</title>
+	<style type="text/css">
+		.title {
+			font-weight: bold;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="demo-item">
+			<ul class="instruction">
+				<li>1.有thead 就要有tbody tr不能直接写在子节点的根部</li>
+			</ul>
+			<blockquote>
+				When you use thead, there must be no tr that is a direct child of table. All rows must be within either the thead, tbody, or tfoot. Notice that we also wrapped all the rows of data in tbody here.
+			</blockquote>
+			<code>
+				<pre>
+					&lt;table&gt;
+					  &lt;thead&gt;
+					    &lt;tr&gt;
+					      &lt;th&gt;Name&lt;/th&gt;
+					      &lt;th&gt;ID&lt;/th&gt;
+					      &lt;th&gt;Favorite Color&lt;/th&gt;
+					    &lt;/tr&gt;
+					  &lt;/thead&gt;
+					  &lt;tbody&gt;
+					    &lt;tr&gt;
+					      &lt;td&gt;Jim&lt;/td&gt;
+					      &lt;td&gt;00001&lt;/td&gt;
+					      &lt;td&gt;Blue&lt;/td&gt;
+					    &lt;/tr&gt;
+					    &lt;tr&gt;
+					      &lt;td&gt;Sue&lt;/td&gt;
+					      &lt;td&gt;00002&lt;/td&gt;
+					      &lt;td&gt;Red&lt;/td&gt;
+					    &lt;/tr&gt;
+					    &lt;tr&gt;
+					      &lt;td&gt;Barb&lt;/td&gt;
+					      &lt;td&gt;00003&lt;/td&gt;
+					      &lt;td&gt;Green&lt;/td&gt;
+					    &lt;/tr&gt;
+					  &lt;/tbody&gt;
+					&lt;/table&gt;
+				</pre>
+			</code>
+		</div>
+
+		<div class="demo-item">
+			<ul class="instruction">
+				<li>1.默认样式</li>
+				<li>2.默认是有border-spacing:2px的，这个会在thead和tbody的单元格产生间隙，这是因为border-collapse: separate;的缘故</li>
+				<li>为了消除这个间隙，需要修改一个属性 border-collapse: collapse;</li>
+			</ul>
+			<p class='title'>修改之前</p>
+			<style type="text/css">
+				td, th {
+				  border: 1px solid #999;
+				  padding: 0.5rem;
+				  text-align: left;
+				}
+			</style>
+			<table>
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>ID</th>
+			      <th>Favorite Color</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>Jim</td>
+			      <td>00001</td>
+			      <td>Blue</td>
+			    </tr>
+			    <tr>
+			      <td>Sue</td>
+			      <td>00002</td>
+			      <td>Red</td>
+			    </tr>
+			    <tr>
+			      <td>Barb</td>
+			      <td>00003</td>
+			      <td>Green</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<p>修改之后</p>
+			<style type="text/css">
+				.collapse {
+					border-collapse: collapse;
+				}
+			</style>
+			<table class='collapse'>
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>ID</th>
+			      <th>Favorite Color</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>Jim</td>
+			      <td>00001</td>
+			      <td>Blue</td>
+			    </tr>
+			    <tr>
+			      <td>Sue</td>
+			      <td>00002</td>
+			      <td>Red</td>
+			    </tr>
+			    <tr>
+			      <td>Barb</td>
+			      <td>00003</td>
+			      <td>Green</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="demo-item">
+			<p class='title'>连接表格的方法rowspan colspan</p>
+			<p>rowspan colspan接受一个大于2的值，colspan=2 依然是一个单元格 但却占用了水平位置上的两个紧邻列单元格的位置</p>
+			<p>rowspan colspan要根据上下文来做一个相对复杂的计算</p>
+			<div>
+				<h3>colspan</h3>
+				<p>Add up the values for each table cell in that table row to get the final value. Each row should have exactly that value,</p>
+				<p>对于colspan来说 只需要所有的colspan（n） + 所有单独的td（1）为列数(final value)即可</p>
+			</div>
+			<div>
+				<h3>rowspan</h3>
+				<p>If a table element has a rowspan attribute, it spans across two rows vertically. That means the row below it gets +1 to it's table cell count, and needs one less table cell to complete the row.</p>
+				<p>对于rowspan来说比较复杂， 比如对于rowspan等于2来说 会合并rowspan所在的td竖直往下的一行，这也就意味下一行的td单元格就会少一个</p>
+				<p>比如对于第三行第四列应用属性rowspan=2 那么第四行第四列就会被合并 第四行设置列的时候就会少一列 </p>
+				<p>只需要设置 1 2 3 5 6 列就行 </p>
+				<p>1 2 3 4 5 6</p>
+				<p>1 2 3 4 5 6</p>
+				<p>1 2 3 | | 5 6</p>
+				<p>1 2 3 | | 5 6</p>
+			</div>
+			
+			<style type="text/css">
+				table.colrowspan {
+				  border-spacing: 0.5rem;
+				}
+				table.colrowspan td {
+				  padding: 0.5rem;
+				}
+
+				td:nth-child(1) { background: hsl(150, 50%, 50%); }
+				td:nth-child(2) { background: hsl(160, 60%, 50%); }
+				td:nth-child(3) { background: hsl(170, 70%, 50%); }
+				td:nth-child(4) { background: hsl(180, 80%, 50%); }
+				td:nth-child(5) { background: hsl(190, 90%, 50%); }
+				td:nth-child(6) { background: hsl(200, 99%, 50%); }
+			</style>
+			<table class='colrowspan'>
+			  <tr>
+			    <td>This</td>
+			    <td>Little</td>
+			    <td>Piggy</td>
+			    <td>Went</td>
+			    <td>To</td>
+			    <td>Market</td>
+			  </tr>
+			  <tr>
+			    <td colspan="2">This</td>
+			    <td>Little</td>
+			    <td>Piggy</td>
+			    <td>Went</td>
+			    <td>To</td>
+			  </tr>
+			    <tr>
+			    <td colspan="4">This</td>
+			    <td rowspan="3">Little</td>
+			    <td>Piggy</td>
+			  </tr>
+			  <tr>
+			    <td rowspan="2">This</td>
+			    <td>Little</td>
+			    <td>Piggy</td>
+			    <td>Went</td>
+			    <td>To</td>
+			  </tr>
+			  <tr>
+			    <td>Little</td>
+			    <td colspan='2'>Piggy</td>
+			    <td>To</td>
+			  </tr>
+			</table>
+			<p class='title'>再举个例子 sub下标文本 sup上标文本</p>
+			<style type="text/css">
+				.colrowspan-demo {
+					border-collapse: collapse;
+				}
+			</style>
+			<table class='colrowspan colrowspan-demo'>
+				<caption>Specification values: <b>Steel</b>, <b>Castings</b>,
+				   Ann. A.S.T.M. A27-16, Class B;* P max. 0.06; S max. 0.05.</caption>
+				<thead>
+					<tr>
+						<th rowspan='2'>Grade.</th>
+						<th rowspan='2'>Yield Point.	</th>
+						<th colspan='2'>Ultimate tensile strength</th>
+						<th rowspan='2'>Per cent elong. 50.8 mm or 2 in.</th>
+						<th rowspan='2'>Per cent reduct. area.</th>
+					</tr>
+					<tr>
+						<th>kg/mm <sup>2</sup></th>
+						<th>lb/in <sup>2</sup></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Hard</td>
+				     <td>0.45 ultimate</td>
+				     <td>56.2</td>
+				     <td>80,000</td>
+				     <td>15</td>
+				     <td>20</td>
+				    </tr>
+				    <tr>
+				    <td>Medium</td>
+				     <td>0.45 ultimate</td>
+				     <td>49.2</td>
+				     <td>70,000</td>
+				     <td>18</td>
+				     <td>25</td>
+				    </tr>
+				    <tr>
+				    <td>Soft</td>
+				     <td>0.45 ultimate</td>
+				     <td>42.2</td>
+				     <td>60,000</td>
+				     <td>22</td>
+				     <td>30</td>
+				    </tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="demo-item">
+			<p>table的默认表现行为还是很怪异的</p>
+			<ul>
+				<li>1.table只会使用需要的宽度，但是排列的方式却像div，总体上来说像自适应宽度的div</li>
+				<li>2.单元格默认情况下是会折行的，table最大也不会超过 wrapper 但是当设置了white-space: nowrap的时候，此时overflow是不会起作用的 table会无视wrapper把table撑大</li>
+			</ul>
+			<p class='title'>针对1的demo</p>
+			<style type="text/css">
+				.wrap {
+				  width: 300px;
+				  margin: 0 auto;
+				  background: white;
+				  border: 1px solid #0f0;
+				}
+				table {
+				  border: 1px solid red;
+				  margin: 5px 0;
+				}
+			</style>
+			<div class="wrap">
+				<table>
+				  <tr>
+				    <td>test</td>
+				  </tr>
+				</table>
+				<table>
+				  <tr>
+				    <td>longer</td>
+				  </tr>
+				</table>
+				<table>
+				  <tr>
+				    <td>I'm pretty wide, really.</td>
+				  </tr>
+				</table>
+				  <table>
+				  <tr>
+				    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla provident modi aut debitis minus temporibus tempore saepe quas hic ratione itaque quo quisquam earum.</td>
+				  </tr>
+				</table>
+			</div>
+			<p class='title'>针对2的demo</p>
+			<style type="text/css">
+				.nowrap {
+					white-space: nowrap;
+				}
+			</style>
+			<div class="wrap">
+			<table>
+			  <tr>
+			    <td class="nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+			  </tr>
+			</table>
+			<table class="many-cells">
+			  <tr>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			    <td>a</td>
+			  </tr>
+			</table>
+			</div>
+		</div>
+		<div class="demo-item">
+			<p class='title'>可以使用table来制作双轴 比如课程表 制作很简单 就是表头第一行和所有行的第一列都设置成th</p>
+			<style type="text/css">
+				.two-axis td, .two-axis th {
+				  width: 4rem;
+				  height: 2rem;
+				  border: 1px solid #ccc;
+				  text-align: center;
+				}
+				.two-axis th {
+					width: 6rem;
+				  background: lightblue;
+				  border-color: white;
+				}
+			</style>
+			<table class='two-axis'>
+			  <tr>
+			    <th></th>
+			    <th>一</th>
+			    <th>二</th>
+			    <th>三</th>
+			    <th>四</th>
+			  </tr>
+			  <tr>
+			    <th>8:00-10:00</th>
+			    <td>JAZZ</td>
+			    <td>HIPHOP</td>
+			    <td>POPPING</td>
+			    <td>BREAKING</td>
+			  </tr>
+			  <tr>
+			    <th>10:00-12:00</th>
+			    <td>POPPING</td>
+			    <td>JAZZ</td>
+			    <td>HIPHOP</td>
+			    <td>BREAKING</td>
+			  </tr>
+			  <tr>
+			    <th>14:00-16:00</th>
+			    <td>HIPHOP</td>
+			    <td>BREAKING</td>
+			    <td>JAZZ</td>
+			    <td>POPPING</td>
+			  </tr>
+			  <tr>
+			    <th>16:00-18:00</th>
+			    <td>BREAKING</td>
+			    <td>JAZZ</td>
+			    <td>HIPHOP</td>
+			    <td>POPPING</td>
+			  </tr>
+			</table>
+		</div>
+
+		<div class="demo-item">
+			<p class='title'>模拟一个table</p>
+			<style type="text/css">
+				.inmitate-table div {
+					width: 6rem;
+					height: 2rem;
+					border: 1px solid #ccc;
+					text-align: center;
+					vertical-align: middle;
+				}
+			</style>
+			<section style="display: table;" class='inmitate-table'>
+			  <header style="display: table-row;">
+			    <div style="display: table-cell;">1</div>
+			    <div style="display: table-cell;">2</div>
+			    <div style="display: table-cell;">3</div>
+			  </header>
+			  <div style="display: table-row;">
+			    <div style="display: table-cell;">4</div>
+			    <div style="display: table-cell;">5</div>
+			    <div style="display: table-cell;">6</div>
+			  </div>
+			</section>
+			<pre>
+display: table                /* table     */
+display: table-cell           /* td       */
+display: table-row            /* tr        */
+display: table-column         /* col       */
+display: table-column-group   /* colgroup  */
+display: table-footer-group   /* tfoot     */
+display: table-header-group   /* thead     */</pre>
+		</div>
+
+
+		<div class='demo-item'>
+			<p>试一下inline-table属性</p>
+			<section style="display: inline-table;" class='inmitate-table'>
+			  <header style="display: table-row;">
+			    <div style="display: table-cell;">1</div>
+			    <div style="display: table-cell;">2</div>
+			    <div style="display: table-cell;">3</div>
+			  </header>
+			  <div style="display: table-row;">
+			    <div style="display: table-cell;">4</div>
+			    <div style="display: table-cell;">5</div>
+			    <div style="display: table-cell;">6</div>
+			  </div>
+			</section>
+
+			<section style="display: inline-table;" class='inmitate-table'>
+			  <header style="display: table-row;">
+			    <div style="display: table-cell;">1</div>
+			    <div style="display: table-cell;">2</div>
+			    <div style="display: table-cell;">3</div>
+			  </header>
+			  <div style="display: table-row;">
+			    <div style="display: table-cell;">4</div>
+			    <div style="display: table-cell;">5</div>
+			    <div style="display: table-cell;">6</div>
+			  </div>
+			</section>
+			<p>可以看出来 的确1.table还是只占用需要的宽度2.多个table的行为就像</p>
+		</div>
+	</div>
+	<div class="demo-item">
+		<p class='title'>table的垂直结构栈</p>
+		<img src="https://cdn.css-tricks.com/wp-content/uploads/2013/09/table-3D.jpg">
+	</div>
+</body>
+</html>

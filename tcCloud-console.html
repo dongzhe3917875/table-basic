@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仿照腾讯云的控制台</title>
+	<link rel="stylesheet" href="console.css">
+	<link rel="stylesheet" href="font-awesome-4.7/css/font-awesome.css">
+</head>
+<body>
+	<div class="pageWrapper">
+		<!-- header part -->
+		<div class='qc-header-nav' id='topnav'>
+			<!-- logo部分 -->
+			<div class="qc-nav-logo">
+				<a class="qc-logo-inner" href='http://qiyun.360.cn' title='游戏云'>
+					<span class="qc-logo-text">
+						<span class='logo-text-inner'>游戏云</span>
+					</span>
+				</a>
+			</div>
+			<!-- service部分 -->
+			<div class="qc-nav-service">
+				<ul class="qc-service-inner">
+					<li><a href="javascript:;">总览</a></li>
+					<li class='qc-service-menu'>
+						<a href="javascript:;" class='arrow-down'>云产品</a>
+						<!-- 要展示的部分 -->
+						<div class="nav-dropdown-canvas">
+							<div class="nav-dropdown-inner">
+								<!-- 放第一级菜单用的 -->
+								<div class="menu-level-1">
+									<ul>
+										<li class='menu-all'>
+											<a href="javascript:;">所有云产品</a>
+										</li>
+										<li class='qc-hover'>
+											<a href="javascript:;">基础产品</a>
+										</li>
+										<li class='qc-hover'>
+											<a href="javascript:;">域名服务</a>
+										</li>
+										<li class='qc-hover'>
+											<a href="javascript:;">视频服务</a>
+										</li>
+									</ul>
+								</div>
+								<!-- 放菜单信息 -->
+								<div class="menu-level-info">
+									<div class="menu-list-wrap">
+										<!-- 二级菜单 -->
+										<div class="menu-level-2">
+											<ul>
+												<li class='qc-hover'>
+													<a href="javascript:;">云计算与网络</a>
+												</li>
+												<li class='qc-hover'>
+													<a href="javascript:;">存储</a>
+												</li>
+												<li class='qc-hover'>
+													<a href="javascript:;">CDN与加速</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu-list-wrap">
+										<div class="menu-level-2">
+											<ul>
+												<li class='qc-hover'>
+													<a href="javascript:;">域名解析</a>
+												</li>
+												<li class='qc-hover'>
+													<a href="javascript:;">域名攻击</a>
+												</li>
+												<li class='qc-hover'>
+													<a href="javascript:;">域名加速</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu-list-wrap">
+										<div class="menu-level-2">
+											<ul>
+												<li class='qc-hover'>
+													<a href="javascript:;">视频云</a>
+												</li>
+												<li class='qc-hover'>
+													<a href="javascript:;">花椒</a>
+												</li>
+												<li class='qc-hover'>
+													<a href="javascript:;">直播</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class='qc-nav-tool'><a href="">常用服务</a></li>
+				</ul>
+			</div>
+			<!-- user部分 -->
+			<ul class="qc-nav-user">
+				<li>
+					<a href="javascript:;">English</a>
+				</li>
+				<li>
+					<a href="javascript:;">备案</a>
+				</li>
+				<li class='qc-nav-hover'>
+					<a href="javascript:;" class='arrow-down'>东京的雪</a>
+					<div class="qc-user-info qc-user-panel">
+						<a href="javascript:;">账号信息</a>
+						<a href="javascript:;">安全设置</a>
+						<a href="javascript:;">访问管理</a>
+						<a href="javascript:;">项目管理</a>
+						<span class="qc-user-info-line"></span>
+						<a href="javascript:;">退出</a>
+					</div>
+				</li>
+				<li class='qc-nav-hover'>
+					<a href="javascript:;" class='arrow-down'>费用</a>
+					<div class="qc-user-info qc-user-panel">
+						<!-- 余额label部分 -->
+						<div class="qc-user-balance">
+							<div class='qc-balance-wrapper table-fixed-common'>
+								<div class='table-row'>
+									<span class='table-cell'>账户余额</span>
+									<span class='table-cell'><a href="">立即充值</a></span>
+								</div>
+							</div>
+							<div class="qc-balance-num">
+								<span>155.666</span>
+								<strong class='current-unit'>元</strong>
+							</div>
+						</div>
+						<!-- 关于余额部分的相关操作 -->
+						<div class='table-fixed-common qc-user-voucher'>
+							<ul class='table-row'>
+								<li class='table-cell qc-voucher-item'><a href="">代金券（1）</a></li>
+								<li class='table-cell qc-voucher-item'><a href="">续费</a></li>
+								<li class='table-cell qc-voucher-item'><a href="">发票</a></li>
+							</ul>
+						</div>
+						<div class="qc-user-panel w-p-100">
+							<a href="javascript:;">我的订单</a>
+							<a href="javascript:;">收支明细</a>
+							<a href="javascript:;">资源账单</a>
+							<span class="qc-user-info-line"></span>
+							<a href="javascript:;">费用中心</a>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;" class='arrow-down'>工单</a>
+				</li>
+				<!-- 
+					<dl>           // 组合
+						<dt></dt>    // 标题
+						<dd></dd>    // 条目
+						<dd></dd>    // 条目
+					</dl>
+				 -->
+				<li class='qc-log-icon'>
+					<a href="javascript:;" ><i class="fa fa-hourglass" aria-hidden="true"></i></a>
+					<div class="sidebar-panel action-logs">
+						<div class="sidebar-panel-container">
+							<div style='margin-bottom: 30px;'></div>
+							<div class="operatelog-list-container">
+								<!-- 列表 -->
+								<dl class='action-logs-list'>
+									<!-- 列表标题 -->
+									<dt>
+										<em class="point">&nbsp;</em>云硬盘续费
+									</dt>
+									<!-- 列表项 -->
+									<dd class='logs-date'>
+										<span>2017-07-26 03:47:54</span>
+									</dd>
+									<dd class='title-list-logs'>云硬盘（1）</dd>
+									<dd class="server-dd">
+										<i class="fa fa-check-circle" aria-hidden="true"></i>
+										<div class="reason-info">
+											<a style='display: inline-block;'>disk-asafas23423</a>
+											<div class='reason-text-update'>
+												<div>续费至2017-08-26 18:12:04</div>
+											</div>
+										</div>
+									</dd>	
+								</dl>
+								<dl class='action-logs-list'>
+									<!-- 列表标题 -->
+									<dt>
+										<em class="point">&nbsp;</em>创建云硬盘
+									</dt>
+									<!-- 列表项 -->
+									<dd class='logs-date'>
+										<span>2017-07-26 03:47:54</span>
+									</dd>
+									<dd class='title-list-logs'>云硬盘（1）</dd>
+									<dd class="server-dd">
+										<i class="fa fa-check-circle" aria-hidden="true"></i>
+										<div class="reason-info">
+											<a style='display: inline-block;'>disk-asafas23423</a>
+										</div>
+									</dd>	
+									<dd class="title-list-logs">云硬盘大小10GB</dd>
+									<dd class="title-list-logs">云硬盘数量1个</dd>
+									<dd class="title-list-logs">购买时长1个月</dd>
+								</dl>
+								<dl class='action-logs-list'>
+									<!-- 列表标题 -->
+									<dt>
+										<em class="point">&nbsp;</em>创建RDS
+									</dt>
+									<!-- 列表项 -->
+									<dd class='logs-date'>
+										<span>2017-07-26 03:47:54</span>
+									</dd>
+									<dd class='title-list-logs'>RDS（1）</dd>
+									<dd class="server-dd">
+										<i class="fa fa-check-circle" aria-hidden="true"></i>
+										<div class="reason-info">
+											<a style='display: inline-block;'>disk-asafas23423</a>
+										</div>
+									</dd>	
+									<dd class="title-list-logs">RDS大小10GB</dd>
+									<dd class="title-list-logs">RDS数量1个</dd>
+									<dd class="title-list-logs">购买时长1个月</dd>
+								</dl>
+								<dl class='action-logs-list'>
+									<!-- 列表标题 -->
+									<dt>
+										<em class="point">&nbsp;</em>创建云主机
+									</dt>
+									<!-- 列表项 -->
+									<dd class='logs-date'>
+										<span>2017-07-26 03:47:54</span>
+									</dd>
+									<dd class='title-list-logs'>云主机（2）</dd>
+									<dd class="server-dd">
+										<i class="fa fa-check-circle" aria-hidden="true"></i>
+										<div class="reason-info">
+											<a style='display: inline-block;'>cloud-asafas23423</a>
+										</div>
+									</dd>	
+									<dd class="title-list-logs">云主机大小10GB</dd>
+									<dd class="title-list-logs">云主机数量1个</dd>
+									<dd class="title-list-logs">购买时长1个月</dd>
+								</dl>
+							</div>
+							<a href="" class='action-logs-more'>查看更多</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	<!-- <table style='height: 60px;'>
+		<tr>
+			<td><div>asdas</div></td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+	</table> -->
+	<!-- div line-height -->
+	<!-- <div class='wrapper' style='height:50px;border: 1px solid #ccc;line-height: 30px;'>
+		<div class='inner' style='background-color: #ddd'>sadsad</div>
+	</div> -->
+</body>
+<script src="simple.js"></script>
+</html>

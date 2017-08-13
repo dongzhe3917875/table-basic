@@ -161,7 +161,7 @@
 						<dd></dd>    // 条目
 					</dl>
 				 -->
-				<li class='qc-log-icon'>
+				<li class='qc-log-icon '>
 					<a href="javascript:;" ><i class="fa fa-hourglass" aria-hidden="true"></i></a>
 					<div class="sidebar-panel action-logs">
 						<div class="sidebar-panel-container">
@@ -255,7 +255,750 @@
 				</li>
 			</ul>
 		</div>
+		<div class="container">
+			<!-- 侧边栏 -->
+			<div class="aside">
+				<div class="menu">
+					<h2>
+						<span>费用中心</span>
+					</h2>
+					<div class="line-mod"></div>
+					<!-- 侧边栏开始的位置 menu-list -->
+					<!-- 侧边栏出滑动条 超出container的高度就出 -->
+					<dl class='menu-list'>
+						<dd>
+							<a href="javascript:;" class='menu-lv2'>
+								<span>账户信息</span>
+							</a>
+						</dd>
+						<dd>
+							<a href="javascript:;" class='menu-lv2'>
+								<span>我的订单</span>
+							</a>
+						</dd>
+						<dd>
+							<a href="javascript:;" class='menu-lv2'>
+								<span>续费管理</span>
+							</a>
+						</dd>
+						<dd>
+							<a href="javascript:;" class='menu-lv2'>
+								<span>资金管理</span>
+								<i class="arrow fa fa-angle-down"></i>
+							</a>
+							<ul class='menu-sub hide'>
+								<li>
+									<a href="" class="menu-lv3">
+										<i class='ico-dot'></i>
+										<span>充值</span>
+									</a>
+								</li>
+								<li>
+									<a href="" class="menu-lv3">
+										<i class='ico-dot'></i>
+										<span>自主提现</span>
+									</a>
+								</li>
+								<li>
+									<a href="" class="menu-lv3">
+										<i class='ico-dot'></i>
+										<span>线下汇款查询</span>
+									</a>
+								</li>
+							</ul>	
+						</dd>
+						<dd>
+							<a href="javascript:;" class='menu-lv2'>
+								<span>账单管理</span>
+								<i class="arrow fa fa-angle-down"></i>
+							</a>
+							<ul class='menu-sub hide'>
+								<li>
+									<a href="" class="menu-lv3">
+										<i class='ico-dot'></i>
+										<span>收支明细</span>
+									</a>
+								</li>
+								<li>
+									<a href="" class="menu-lv3">
+										<i class='ico-dot'></i>
+										<span>资源账单</span>
+									</a>
+								</li>
+							</ul>	
+						</dd>
+						<dd>
+							<a href="javascript:;" class='menu-lv2'>
+								<span>发票管理</span>
+							</a>
+						</dd>
+						<dd>
+							<a href="javascript:;" class='menu-lv2'>
+								<span>合同管理</span>
+							</a>
+						</dd>
+						<dd>
+							<a href="javascript:;" class='menu-lv2'>
+								<span>代金券管理</span>
+							</a>
+						</dd>
+					</dl>
+				</div>
+				<a class="btn-fold-menu" title='收起'></a>
+			</div>
+			<div class="main">
+				<div class="manage-area-title">
+					<h2>收支明细</h2>
+				</div>
+				<div class="common-tab">
+					<p class="common-title-bar">
+						这是一条神奇的天路
+					</p>
+					<div class="tab-wrapper">
+						<div role="tablist">
+							<span role='tab' class='current'>本月</span>
+							<span role='tab'>上月</span>
+							<span role='tab'>本季度</span>
+							<span role='tab'>上季度</span>
+						</div>
+					</div>
+				</div>
+				<!-- table部分 -->
+				<div class="table-container">
+					<div data-role="grid-view">
+						<div class='table-panel' style='height:383px'>
+							<!-- fixed head -->
+							<div class='table-fixed-head' style='width:auto;padding-right: 0px; display: block;'>
+								<!-- 固定表头的table 只有thead部分  最小宽度是100% 也是可以扩大的 -->
+								<table class="table-box" style='min-width: 100%'>
+									<!-- 列配置colgroup -->
+									<colgroup>
+										<col style='width:15%'>
+										<col style='width:15%'>
+										<col style='width:20%'>
+										<col style='width:20%'>
+										<col style='width:20%'>
+										<col style='width:auto'>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>
+												<div>
+													<span class='text-overflow'>扣费时间</span>
+												</div>
+											</th>
+											<th>
+												<div>
+													<span class='text-overflow'>交易类型</span>
+												</div>
+											</th>
+											<th>
+												<div>
+													<span class='text-overflow'>相关描述</span>
+												</div>
+												<i class="resize-line-icon"></i>
+											</th>
+											<th>
+												<div>
+													<span class='text-overflow'>账户入账／支付（元）</span>
+												</div>
+											</th>
+											<th>
+												<div>
+													<span class='text-overflow'>可用余额</span>
+												</div>
+											</th>
+											<th>
+												<div>
+													<span class='text-overflow'>操作</span>
+												</div>
+											</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
 
+							<div class="table-fixed-body" style='min-height: 350px;height: auto;max-height: 180px;'>
+								<table class="table-box" style='min-width: 100%'>
+									<colgroup>
+										<col style='width:15%'>
+										<col style='width:15%'>
+										<col style='width:20%'>
+										<col style='width:20%'>
+										<col style='width:20%'>
+										<col style='width:auto'>
+									</colgroup>
+									<!-- 只有body部分 -->
+									<tbody>
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+										
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+
+										<tr class='item-row'>
+											<td>
+												<div>
+													<span class='text-overflow'>2017-07-26 03:47:53</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>扣费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>弹性云盘续费</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>-3.00</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span class='text-overflow'>155.66</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<a href='javascript:;' class='text-overflow'>详情</a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</div>
 	<!-- <table style='height: 60px;'>
 		<tr>

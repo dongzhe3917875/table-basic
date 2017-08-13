@@ -1,4 +1,4 @@
-html, body, ul, li, tr, td, dl, dd, dt {
+html, body, ul, li, tr, td, dl, dd, dt, h1, h2, h3 {
 	margin: 0;
 	padding: 0;
 }
@@ -17,7 +17,9 @@ html, body {
 	position: relative;
 }
 
-
+.hide {
+	display: none;
+}
 
 /* header common start */
 .qc-header-nav {
@@ -181,12 +183,12 @@ a.arrow-down:after {
 	padding: 20px;
 }
 
-.qc-service-inner li a, .qc-nav-user li a {
+/*.qc-service-inner li a, .qc-nav-user li a {
 	display: block;
 	width: 100%;
 	color: #fff;
 	position: relative;
-}
+}*/
 /* 所有的after都绝对定位 */
 .qc-service-inner a:after {
 	content: '';
@@ -483,7 +485,397 @@ strong, b {
 }
 /* log panel end */
 
+/*  铺满整个屏幕的写法 */
+.container {
+	position: absolute;
+	transform: none !important;
+	height: auto;
+	background-color: #fff;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	top: 50px;
+}
+/* height 100% 可以继承高度 */
+/* https://jsfiddle.net/dongzhe/4a0v2vkb/ */
+.aside {
+	position: relative;
+	width: 200px;
+	background-color: #f0f6f6;
+	border-right: 1px solid #cedfea;
+	display: inline-block;
+  height: 100%;
+  vertical-align: top;
+  -webkit-font-smoothing: antialiased;
+}
+.menu {
+	height: 100%;
+	position: relative;
+}
+/* 解锁垂直居中的新姿势 利用after伪类元素*/
+/* https://jsfiddle.net/dongzhe/rnpum03h/ */
+.aside .menu h2 {
+	font-size: 22px;
+	line-height: 1.2;
+	height: 62px;
+	display: block;
+	padding: 0 20px;
+	color: #171d25;
+}
+.aside .menu h2 span {
+	display: inline-block;
+	vertical-align: middle;
+}
+.aside .menu h2:before {
+	content: '';
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+}
+
+/* 横线居中 */
+.menu .line-mod {
+  width: 156px;
+  height: 0;
+  margin: 0 auto 15px;
+  border: none;
+  border-top: 1px solid #cadbe6;
+  border-bottom: 1px solid #f8fbfb;
+}
+.menu a {
+	color: #586376;
+	display: inline-block;
+	width: 100%;
+}
+/* 侧边栏收起 */
+.btn-fold-menu {
+	position: absolute;
+	top: 21px;
+	right: -1px;
+	width: 16px;
+	height: 36px;
+	border: 1px solid #c7e0ef;
+	background-color: #fff;
+	/* 左上 右上 右下 左下*/
+	border-radius: 3px 0 0 3px;
+	cursor: pointer;
+}
+/* 悬浮 */
+.btn-fold-menu:hover {
+	background-color: #f0f6f6;
+}
+/* 利用伪类减少标签 */
+.btn-fold-menu:after {
+	content: '《';
+	position: absolute;
+	top: 50%;
+	left: -2px;
+	text-align: center;
+	transform: translateY(-50%);
+}
+.menu-list {
+	font-size: 14px;
+	/* line-height 是可以继承的 这点很重要 厉害 ！！*/
+	line-height: 35px;
+	/* 自己的高度是由内容决定的 */
+	overflow: auto;
+	position: absolute;
+	width: 100%;
+	padding-top: 15px;
+	/* 必须加上这两句 是为了让外层高度有一个固定的值*/
+	/* 加上这两句 高度就不会随着里面元素而变化 只会随着父层元素的变化而变化*/
+	top: 85px;
+	bottom: 0;
+}
+
+.menu-list dd {
+	position: relative;
+	width: 100%;
+}
+
+.menu-lv2 {
+	line-height: 36px;
+}
+.menu span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.menu-lv2 span {
+	font-weight: 700;
+	margin-left: 25px; 
+}
+
+/* 箭头 */
+.menu-lv2 .arrow {
+	position: absolute;
+	right: 24px;
+	top: 11px;
+	overflow: hidden;
+	font-size: 18px;
+}
+.menu-list a:hover {
+  font-weight: 400;
+  color: #2277da;
+  background-color: #d5e2ef;
+}
+
+.menu-lv3 {
+	display: block;
+}
+.menu-sub {
+	-webkit-font-smoothing: auto;
+}
+
+/* 画一个圆点 */
+.menu-lv3 .ico-dot {
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	/* margin 可以进行大的调控 */
+	margin: 0 14px 0 29px;
+	vertical-align: middle;
+	border-radius: 5px;
+	background: #b2becd;
+}
 
 
+/* 内容部分 */
+.main {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 200px;
+	background-color: #fff;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.manage-area-title {
+	margin: 0 20px;
+	font-size: 0;
+	min-height: 62px;
+	line-height: 62px;
+	position: relative;
+}
+
+.manage-area-title h2 {
+	font-size: 22px;
+	font-weight: 400;
+	margin-right: 20px;
+	max-width: 70%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+	display: inline-block;
+	vertical-align: middle;
+}
 
 
+/* tab */
+.common-tab {
+	position: relative;
+	/*三个是 上 左右 下 所以下时10px*/
+	padding: 0 0 10px;
+	margin: 0 20px;
+}
+
+.common-tab:after, .common-tab:before{
+	display: table;
+	content: '';
+}
+.common-tab:after {
+	/* 清除浮动 */
+	clear: both;
+}
+
+.common-title-bar {
+	margin: 0 20px 10px;
+	padding: 5px 10px;
+	vertical-align: middle;
+	color: #264663;
+	border: 1px solid #7AB1DE;
+	border-radius: 2px;
+	background: #D2E7F7;
+	position: relative;
+
+	margin-left: 0;
+	margin-right: 0;
+
+	font-size: 12px;
+	line-height: 22px;
+	
+	/*只用 line-height 和 vertical-align就可以的 */
+}
+
+.tab-wrapper {
+	float: left;
+	height: 27px;
+	display: inline-block;
+	font-size: 0;
+	vertical-align: middle;
+}
+.tab-wrapper:after, .tab-wrapper:before {
+	display: table;
+	content: "";
+}
+
+div[role=tablist] {
+	float: left;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+span[role=tab] {
+	float: left;
+	padding: 0 20px;
+	color: #000;
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid #ddd;
+	border-right: none;
+	height: 27px;
+	box-sizing: border-box;
+	line-height: 25px;
+	border-radius: 0;
+}
+
+span[role=tab].current {
+	color: #fff !important;
+  background-color: #006eff !important;
+  border-color: #006eff;
+}
+span[role=tab]:last-child {
+	border-right: 1px solid #ddd;
+}
+
+.table-fixed-head {
+	background-color: #f6f8fa;
+  border-bottom: 1px solid #d1d5de;
+  border-top: 1px solid #d1d5de;
+}
+
+.table-fixed-head thead {
+	background-color: transparent;
+	border: 0;
+}
+
+.table-panel {
+	position: relative;
+	background-color: #fff;
+	margin: 0 20px;
+	overflow: hidden;
+}
+
+.table-panel .table-box {
+	border-collapse: collapse;
+	border-spacing: 0;
+	table-layout: fixed;
+	width: 100%;
+	position: relative;
+}
+
+.table-panel thead {
+	color: #454951;
+  font-size: 14px;
+  font-weight: 700;
+  /*line-height 很厉害的样子*/
+  line-height: 30px;
+  margin-right: 0;
+  width: 100%;
+}
+
+.table-box tr {
+	outline: 0;
+	
+}
+
+.table-box thead tr {
+	background-color: #f6f8fa;
+}
+.table-box tbody tr {
+
+}
+
+.table-box th {
+	text-align: left;
+  vertical-align: middle;
+  padding: 0;
+	font-size: 0;
+	
+	/* 下面有的东西要绝对定位 */
+	position: relative;
+}
+
+.table-box td {
+	border-bottom: 1px solid #e6ebf2;
+	color: #454a51;
+	font-size: 0;
+	line-height: 19px;
+	padding-bottom: 6px;
+	padding-top: 6px;
+	text-align: left;
+	vertical-align: middle;
+	height: 42px;
+}
+
+.table-box th > div, .table-box td > div {
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: middle;
+	display: inline-block;
+	box-sizing: border-box;
+
+	font-size: 12px;
+	height: 30px;
+
+	position: relative;
+	color: #454a51;
+
+}
+
+.table-box td > div {
+	height: auto;
+}
+
+.table-box a {
+	vertical-align: middle;
+  color: #2277da;
+  text-decoration: none;
+}
+.table-box a:last-child {
+	margin-right: 0;
+}
+
+
+.table-box th > div span.text-overflow {
+	display: inline-block;
+	max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.resize-line-icon {
+	border-right: 1px solid #d1d5de;
+	position: absolute;
+	right: 0;
+	height: 20px;
+	padding: 0 5px;
+	top: 50%;
+	transform: translateY(-50%);
+
+	/* 调整resize */
+	cursor: e-resize;
+}
+
+
+.table-fixed-body {
+	/* 需要动态的设定一个最大高度 高度应该和屏幕的尺寸动态计算 */
+	overflow-y: auto;
+	border-bottom: 1px solid #D1D5DE;
+}

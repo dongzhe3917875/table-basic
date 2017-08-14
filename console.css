@@ -183,12 +183,14 @@ a.arrow-down:after {
 	padding: 20px;
 }
 
-.qc-service-inner li a {
+.qc-service-inner li a, .qc-nav-user li a.arrow-down {
 	display: block;
 	width: 100%;
 	color: #fff;
 	position: relative;
 }
+
+
 /* 所有的after都绝对定位 */
 .qc-service-inner a:after {
 	content: '';

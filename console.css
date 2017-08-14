@@ -840,6 +840,21 @@ span[role=tab]:last-child {
 
 }
 
+.filter-btn {
+	cursor: pointer;
+	position: relative;
+	display: block;
+	padding-right: 10px;
+}
+
+.filter-btn:hover {
+	color: #2277da;
+}
+
+
+
+
+
 .table-box td > div {
 	height: auto;
 }
@@ -853,6 +868,9 @@ span[role=tab]:last-child {
 	margin-right: 0;
 }
 
+.table-box th .fa {
+	vertical-align: middle;
+}
 
 .table-box th > div span.text-overflow {
 	display: inline-block;
@@ -860,6 +878,81 @@ span[role=tab]:last-child {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+.table-box th .filter-btn span.text-overflow {
+	max-width: 76%;
+	margin-right: 5px;
+	vertical-align: middle;
+}
+
+.filtrateu {
+	position: absolute;
+	border: 1px solid #D1D2D3;
+	border-radius: 2px;
+	min-width: 100%;
+	max-width: 190px;
+	box-sizing: border-box;
+	z-index: 9;
+
+	top: 100%;
+	margin-top: 2px;
+	margin-left: -10px;
+
+	background-color: #fff;
+
+	max-height: 160px;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+}
+
+.filtrateu-menu {
+
+	text-align: left;
+	
+}
+
+.filtrateu-menu.filter-table {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.filtrateu-menu.filter-table li  {
+	display: table-row;
+}
+
+.filtrateu-menu.filter-table li span {
+	display: table-cell;
+}
+.filtrateu-menu li span {
+	
+
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filtrateu-menu.filter-table li span:first-child {
+	width: 20px;
+}
+.filtrateu-menu li a {
+  padding: 0 10px;
+  font-weight: 400;
+  display: block;
+}
+
+.filtrateu-menu li input[type=checkbox] {
+	width: 20px;
+}
+
+.filtrateu-menu.filter-table.filter-single li.selected a, .filtrateu-menu.filter-table.filter-single li.selected a:hover {
+	background-color: #2277da;
+	color: #fff;
+}
+.filtrateu-menu.filter-table.filter-single li a:hover {
+    background-color: #F2F2F2;
+    text-decoration: none;
 }
 
 .resize-line-icon {

@@ -121,20 +121,21 @@ var equalHeight = function() {
 
 var resize_line_icon_callback_mouseup = function(j) {
 	document.removeEventListener('mousemove', resize_line_icons_obj['mousemove' + j], false)
+	document.body.style.cursor = 'pointer'
 }
 
 
 var resize_line_icon_callback = function(event, dom, j) {
+
 	let left = event.target.getBoundingClientRect().left
 	var origin = ths_head[j - 1].offsetWidth
 	console.log('origin', origin)
 	let table_width = table_head.offsetWidth
 	resize_line_icons_obj['mousemove' + j] = function(event) {
+		document.body.style.cursor = 'e-resize'
 		// 在这里移动
 		console.log('clientX: ', event.clientX, ', left:', left, '差值：', event.clientX - left)
 		widthDis = event.clientX - left
-
-
 		cols[j - 1].style.width = origin + widthDis + 'px'
 		if (parseInt(cols[j - 1].style.width) <= 100) {
 			cols[j - 1].style.width = '100px'
@@ -151,18 +152,20 @@ var resize_line_icon_callback = function(event, dom, j) {
 			}
 			var end_width = 0;
 			end_width = parseInt(table_head.style.width) - other_width
-			if (end_width <= 100) {
-				cols[ths_head.length - 1].style.width = 100 + 'px'
-			} else {
-				cols[ths_head.length - 1].style.width = parseInt(table_head.style.width) - other_width + 'px'
-			}
+			cols[ths_head.length - 1].style.width = parseInt(table_head.style.width) - other_width + 'px'
+			// if (end_width <= 100) {
+			// 	cols[ths_head.length - 1].style.width = 100 + 'px'
+			// } else {
+			// 	cols[ths_head.length - 1].style.width = parseInt(table_head.style.width) - other_width + 'px'
+			// }
 
 			end_width = parseInt(table_body.style.width) - other_width
-			if (end_width <= 100) {
-				cols_body[ths_head.length - 1].style.width = '100px'
-			} else {
-				cols_body[ths_head.length - 1].style.width = parseInt(table_body.style.width) - other_width + 'px'
-			}
+			cols_body[ths_head.length - 1].style.width = parseInt(table_body.style.width) - other_width + 'px'
+			// if (end_width <= 100) {
+			// 	cols_body[ths_head.length - 1].style.width = '100px'
+			// } else {
+			// 	cols_body[ths_head.length - 1].style.width = parseInt(table_body.style.width) - other_width + 'px'
+			// }
 		} else {
 			cols[ths_head.length - 1].style.width = 100 + 'px'
 			cols_body[ths_head.length - 1].style.width = '100px'

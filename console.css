@@ -6,7 +6,9 @@ html, body, ul, li, tr, td, dl, dd, dt, h1, h2, h3 {
 table {
 	border-collapse: collapse; /* 这是为了消除border-spacing */
 }
-
+col {
+	min-width: 100px;
+}
 li {
 	list-style: none;
 }
@@ -872,7 +874,7 @@ span[role=tab]:last-child {
 	vertical-align: middle;
 }
 
-.table-box th > div span.text-overflow {
+.table-box th > div span.text-overflow, .table-box td > div span.text-overflow {
 	display: inline-block;
 	max-width: 100%;
 	overflow: hidden;
@@ -936,10 +938,14 @@ span[role=tab]:last-child {
 .filtrateu-menu.filter-table li span:first-child {
 	width: 20px;
 }
-.filtrateu-menu li a {
+.filtrateu-menu li a, .filtrateu-menu li label {
   padding: 0 10px;
   font-weight: 400;
   display: block;
+}
+.filtrateu-menu li label {
+	padding-left: 10px;
+	cursor: pointer;
 }
 
 .filtrateu-menu li input[type=checkbox] {

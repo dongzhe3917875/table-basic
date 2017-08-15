@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="console.css">
 	<link rel="stylesheet" href="font-awesome-4.7/css/font-awesome.css">
 </head>
-<body>
+<body ondragstart ="return false" >
 	<div class="pageWrapper">
 		<!-- header part -->
 		<div class='qc-header-nav' id='topnav'>
@@ -398,28 +398,28 @@
 														<div class='filtrateu hide'>
 															<ul class='filtrateu-menu filter-table'>
 																<li class='selected'>
-																	<span><input type="checkbox" checked name="" id=""></span>
-																	<span><a href="javascript:;">扣费</a></span>
+																	<span><input type="checkbox" checked name="" id="fee1"></span>
+																	<span><label for="fee1">扣费</label></span>
 																</li>
 																<li>
-																	<span><input type="checkbox" checked name="" id=""></span>
-																	<span><a href="javascript:;">充值</a></span>
+																	<span><input type="checkbox" checked name="" id="fee2"></span>
+																	<span><label for="fee2">充值</label></span>
 																</li>
 																<li>
-																	<span><input type="checkbox" checked name="" id=""></span>
-																	<span><a href="javascript:;">提现</a></span>
+																	<span><input type="checkbox" checked name="" id="fee3"></span>
+																	<span><label for="fee3">提现</label></span>
 																</li>
 																<li>
-																	<span><input type="checkbox" checked name="" id=""></span>
-																	<span><a href="javascript:;">退款</a></span>
+																	<span><input type="checkbox" checked name="" id="fee4"></span>
+																	<span><label for="fee4">退款</label></span>
 																</li>
 																<li>
-																	<span><input type="checkbox" checked name="" id=""></span>
-																	<span><a href="javascript:;">冻结</a></span>
+																	<span><input type="checkbox" checked name="" id="fee5"></span>
+																	<span><label for="fee5">冻结</label></span>
 																</li>
 																<li>
-																	<span><input type="checkbox" checked name="" id=""></span>
-																	<span><a href="javascript:;">解冻</a></span>
+																	<span><input type="checkbox" checked name="" id="fee6"></span>
+																	<span><label for="fee6">解冻</label></span>
 																</li>
 															</ul>
 														</div>
@@ -461,6 +461,7 @@
 												<div>
 													<span class='text-overflow'>可用余额</span>
 												</div>
+												<i class="resize-line-icon"></i>
 											</th>
 											<th>
 												<div>

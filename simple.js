@@ -5,6 +5,16 @@ var menu_lv2s = document.querySelectorAll('.menu-lv2')
 var tabs = document.querySelectorAll('.tab-wrapper span[role=tab]')
 var filter_btns = document.querySelectorAll('.filter-btn')
 var filtrateu_menus = document.querySelectorAll('.filtrateu-menu')
+var resize_line_icons = document.querySelectorAll('.resize-line-icon')
+var resize_line_icons_obj = {}
+var cols = document.querySelector('.table-fixed-head').querySelectorAll('col')
+var table_head = document.querySelector('.table-fixed-head').querySelector('.table-box')
+var ths_head = document.querySelector('.table-fixed-head').querySelectorAll('th')
+// var ths_body = document.querySelector('.table-fixed-body').querySelectorAll('th')
+
+var cols_body = document.querySelector('.table-fixed-body').querySelectorAll('col')
+var table_body = document.querySelector('.table-fixed-body').querySelector('.table-box')
+var table_body_wrapper = document.querySelector('.table-fixed-body')
 
 var batchBind = function (dom, eventType, callback) {
 	for(var i = 0, item, len=dom.length; item = dom[i++]; i < len) {
@@ -16,6 +26,16 @@ var batchBind = function (dom, eventType, callback) {
 	}
 }
 
+var batchBindOff = function (dom, eventType, callback) {
+	for(var i = 0, item, len=dom.length; item = dom[i++]; i < len) {
+			(function (j) {
+				item['on'+eventType] = null
+				// item.removeEventListener(eventType, function(event) {
+				// 	callback.call(this, event, dom, j)
+				// }, false)
+			})(i)
+	}
+}
 
 
 var menu_level_1_callback = function(event, dom, j) {
@@ -99,7 +119,74 @@ var equalHeight = function() {
 	document.querySelector('.action-logs').style.height = document.body.offsetHeight - 50 + 'px';
 }
 
+var resize_line_icon_callback_mouseup = function(j) {
+	document.removeEventListener('mousemove', resize_line_icons_obj['mousemove' + j], false)
+}
 
+
+var resize_line_icon_callback = function(event, dom, j) {
+	let left = event.target.getBoundingClientRect().left
+	var origin = ths_head[j - 1].offsetWidth
+	console.log('origin', origin)
+	let table_width = table_head.offsetWidth
+	resize_line_icons_obj['mousemove' + j] = function(event) {
+		// 在这里移动
+		console.log('clientX: ', event.clientX, ', left:', left, '差值：', event.clientX - left)
+		widthDis = event.clientX - left
+
+
+		cols[j - 1].style.width = origin + widthDis + 'px'
+		if (parseInt(cols[j - 1].style.width) <= 100) {
+			cols[j - 1].style.width = '100px'
+		}
+
+		cols_body[j - 1].style.width = origin + widthDis + 'px'
+		if (parseInt(cols[j - 1].style.width) <= 100) {
+			cols_body[j - 1].style.width = '100px'
+		}
+		if (widthDis >= 0) {
+			var other_width = 0
+			for (let i = 0; i < ths_head.length - 1; i ++) {
+				other_width = other_width + ths_head[i].offsetWidth
+			}
+			var end_width = 0;
+			end_width = parseInt(table_head.style.width) - other_width
+			if (end_width <= 100) {
+				cols[ths_head.length - 1].style.width = 100 + 'px'
+			} else {
+				cols[ths_head.length - 1].style.width = parseInt(table_head.style.width) - other_width + 'px'
+			}
+
+			end_width = parseInt(table_body.style.width) - other_width
+			if (end_width <= 100) {
+				cols_body[ths_head.length - 1].style.width = '100px'
+			} else {
+				cols_body[ths_head.length - 1].style.width = parseInt(table_body.style.width) - other_width + 'px'
+			}
+		} else {
+			cols[ths_head.length - 1].style.width = 100 + 'px'
+			cols_body[ths_head.length - 1].style.width = '100px'
+		}
+		
+		// console.log(widthDis)
+		table_head.style.width = table_width + widthDis + 'px'
+		table_body.style.width = table_width + widthDis + 'px'
+
+		
+	}
+	document.addEventListener('mousemove', resize_line_icons_obj['mousemove' + j], false)
+
+	document.addEventListener('mouseup', function() {
+		resize_line_icon_callback_mouseup.call(this, j)
+	}, false)
+}
+
+batchBind(resize_line_icons, 'mousedown', resize_line_icon_callback)
+
+table_body_wrapper.onscroll = function() {
+	table_head.style.left = - this.scrollLeft + 'px';
+}
+// batchBind(resize_line_icons, 'mouseup', resize_line_icon_callback_mouseup)
 
 qc_log_icon.addEventListener('mouseover', function(event) {
 	this.classList.add('qc-nav-hover')

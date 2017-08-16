@@ -9,7 +9,11 @@ var resize_line_icons = document.querySelectorAll('.resize-line-icon')
 var resize_line_icons_obj = {}
 var cols = document.querySelector('.table-fixed-head').querySelectorAll('col')
 var table_head = document.querySelector('.table-fixed-head').querySelector('.table-box')
+var table_basic_width = table_head.offsetWidth
+console.log(table_basic_width)
 var ths_head = document.querySelector('.table-fixed-head').querySelectorAll('th')
+
+
 // var ths_body = document.querySelector('.table-fixed-body').querySelectorAll('th')
 
 var cols_body = document.querySelector('.table-fixed-body').querySelectorAll('col')
@@ -145,35 +149,38 @@ var resize_line_icon_callback = function(event, dom, j) {
 		if (parseInt(cols[j - 1].style.width) <= 100) {
 			cols_body[j - 1].style.width = '100px'
 		}
+
+		// if (parseInt(ths_head[ths_head.length - 1].offsetWidth) <= 100) {
+		// 	cols[ths_head.length - 1].style.width = '100px'
+		// 	cols_body[ths_head.length - 1].style.width = '100px'
+		// }
+
 		if (widthDis >= 0) {
 			var other_width = 0
 			for (let i = 0; i < ths_head.length - 1; i ++) {
 				other_width = other_width + ths_head[i].offsetWidth
 			}
+
+
 			var end_width = 0;
 			end_width = parseInt(table_head.style.width) - other_width
-			cols[ths_head.length - 1].style.width = parseInt(table_head.style.width) - other_width + 'px'
-			// if (end_width <= 100) {
-			// 	cols[ths_head.length - 1].style.width = 100 + 'px'
-			// } else {
-			// 	cols[ths_head.length - 1].style.width = parseInt(table_head.style.width) - other_width + 'px'
-			// }
+			if (table_width + widthDis >= table_basic_width) {
+				table_head.style.width = table_width + widthDis + 'px'
+				table_body.style.width = table_width + widthDis + 'px'
+			}
 
 			end_width = parseInt(table_body.style.width) - other_width
-			cols_body[ths_head.length - 1].style.width = parseInt(table_body.style.width) - other_width + 'px'
-			// if (end_width <= 100) {
-			// 	cols_body[ths_head.length - 1].style.width = '100px'
-			// } else {
-			// 	cols_body[ths_head.length - 1].style.width = parseInt(table_body.style.width) - other_width + 'px'
-			// }
-		} else {
-			cols[ths_head.length - 1].style.width = 100 + 'px'
-			cols_body[ths_head.length - 1].style.width = '100px'
+		} else { 
+			cols[ths_head.length - 1].style.width = 'auto'
+			cols_body[ths_head.length - 1].style.width = 'auto'
 		}
 		
+		if (table_width + widthDis <= table_basic_width) {
+			cols[ths_head.length - 1].style.width = 'auto'
+			cols_body[ths_head.length - 1].style.width = 'auto'
+		}
 		// console.log(widthDis)
-		table_head.style.width = table_width + widthDis + 'px'
-		table_body.style.width = table_width + widthDis + 'px'
+		
 
 		
 	}

@@ -133,12 +133,24 @@ var resize_line_icon_callback = function(event, dom, j) {
 
 	let left = event.target.getBoundingClientRect().left
 	var origin = ths_head[j - 1].offsetWidth
-	console.log('origin', origin)
 	let table_width = table_head.offsetWidth
+
+	console.log('ininin')
+
+	var other_width = 0
+	for (let i = 0; i < ths_head.length - 1; i ++) {
+		other_width = other_width + ths_head[i].offsetWidth
+	}
+
+
+	var end_width = 0;
+	end_width = parseInt(table_head.offsetWidth) - other_width
+	console.log(end_width)
+
 	resize_line_icons_obj['mousemove' + j] = function(event) {
 		document.body.style.cursor = 'e-resize'
 		// 在这里移动
-		console.log('clientX: ', event.clientX, ', left:', left, '差值：', event.clientX - left)
+		// console.log('clientX: ', event.clientX, ', left:', left, '差值：', event.clientX - left)
 		widthDis = event.clientX - left
 		cols[j - 1].style.width = origin + widthDis + 'px'
 		if (parseInt(cols[j - 1].style.width) <= 100) {
@@ -150,35 +162,63 @@ var resize_line_icon_callback = function(event, dom, j) {
 			cols_body[j - 1].style.width = '100px'
 		}
 
-		// if (parseInt(ths_head[ths_head.length - 1].offsetWidth) <= 100) {
-		// 	cols[ths_head.length - 1].style.width = '100px'
-		// 	cols_body[ths_head.length - 1].style.width = '100px'
-		// }
+		if (other_width + widthDis + 100  < table_basic_width) {
+			
+			table_head.style.width = table_basic_width  + 'px'
+			table_body.style.width = table_basic_width +  'px'
+			if (widthDis >= 0) {
+
+				console.log('normal_big')
+				var diss = end_width - widthDis
+				if (diss > 100) {
+					cols[ths_head.length - 1].style.width = end_width - widthDis + 'px'
+					cols_body[ths_head.length - 1].style.width = end_width - widthDis + 'px'
+				} else {
+					cols[ths_head.length - 1].style.width = 100 + 'px'
+					cols_body[ths_head.length - 1].style.width = 100 + 'px'
+				}
+			} else {
+				console.log('normal_small')
+
+				cols[ths_head.length - 1].style.width = end_width - widthDis + 'px'
+				cols_body[ths_head.length - 1].style.width = end_width - widthDis + 'px'
+			}
+		} else {
+
+			cols[ths_head.length - 1].style.width = 100 + 'px'
+			cols_body[ths_head.length - 1].style.width = 100 + 'px'
+			if (widthDis >= 0) {
+				table_head.style.width = table_width + widthDis  + 'px'
+				table_body.style.width = table_width + widthDis  + 'px'
+			} else {
+				table_head.style.width = table_width + widthDis  + 'px'
+				table_body.style.width = table_width + widthDis  + 'px'
+			}
+		}
 
 		if (widthDis >= 0) {
-			var other_width = 0
-			for (let i = 0; i < ths_head.length - 1; i ++) {
-				other_width = other_width + ths_head[i].offsetWidth
-			}
+			// var other_width = 0
+			// for (let i = 0; i < ths_head.length - 1; i ++) {
+			// 	other_width = other_width + ths_head[i].offsetWidth
+			// }
 
 
-			var end_width = 0;
-			end_width = parseInt(table_head.style.width) - other_width
+			// var end_width = 0;
+			// end_width = parseInt(table_head.style.width) - other_width
 			if (table_width + widthDis >= table_basic_width) {
-				table_head.style.width = table_width + widthDis + 'px'
-				table_body.style.width = table_width + widthDis + 'px'
-			}
+				// console.log('超了')
+				// cols[ths_head.length - 1].style.width = '100px'
+				// cols_body[ths_head.length - 1].style.width = '100px'
 
-			end_width = parseInt(table_body.style.width) - other_width
+				// table_head.style.width = table_width + widthDis - 100 + 'px'
+				// table_body.style.width = table_width + widthDis - 100 + 'px'
+			}
 		} else { 
-			cols[ths_head.length - 1].style.width = 'auto'
-			cols_body[ths_head.length - 1].style.width = 'auto'
+			// cols[ths_head.length - 1].style.width = 'auto'
+			// cols_body[ths_head.length - 1].style.width = 'auto'
 		}
 		
-		if (table_width + widthDis <= table_basic_width) {
-			cols[ths_head.length - 1].style.width = 'auto'
-			cols_body[ths_head.length - 1].style.width = 'auto'
-		}
+		
 		// console.log(widthDis)
 		
 
